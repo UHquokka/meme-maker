@@ -1,18 +1,26 @@
 const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
 canvas.width = 800;
 canvas.height = 800;
-const ctx = canvas.getContext("2d");
 
-/*사람 만들기*/
-ctx.fillRect(200, 200, 15, 100);
-ctx.fillRect(400, 200, 15, 100);
-ctx.fillRect(260, 200, 100, 200);
+const colors = [
+    "#ff3838",
+    "#ffb8b8",
+    "#c56cf0",
+    "#ff9f1a",
+    "#fff200",
+    "#32ff7e",
+    "#7efff5",
+]
 
-ctx.arc(300, 100, 50, 0, 2 * Math.PI);
-ctx.fill();
+function onClick(event) {
+    ctx.beginPath();
+    const color = colors[Math.floor(Math.random() * colors.length)];
+    ctx.strokeStyle = color;
+    ctx.moveTo(0, 0);
+    ctx.lineTo(event.offsetX, event.offsetY);
+    ctx.lineWidth = 2;
+    ctx.stroke();
+}
 
-ctx.beginPath();
-ctx.fillStyle = "green";
-ctx.arc(270, 100, 10, Math.PI, 2 * Math.PI);
-ctx.arc(310, 100, 10, Math.PI, 2 * Math.PI);
-ctx.fill();
+canvas.addEventListener("mousemove", onClick);
