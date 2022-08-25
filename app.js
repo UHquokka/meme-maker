@@ -1,26 +1,32 @@
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
+const lineWidth = document.getElementById("line-width");
 canvas.width = 800;
 canvas.height = 800;
-
-const colors = [
-    "#ff3838",
-    "#ffb8b8",
-    "#c56cf0",
-    "#ff9f1a",
-    "#fff200",
-    "#32ff7e",
-    "#7efff5",
-]
-
-function onClick(event) {
+ctx.lineWidth = lineWidth.value;
+let isPainting = false;
+function onMove(event) {
+    if (isPainting) {
+        ctx.lineTo(event.offsetX, event.offsetY);
+        ctx.stroke();
+        return;
+    }
+    ctx.moveTo(event.offsetX, event.offsetY);
+}
+function startPainting() {
+    isPainting = true;
+}
+function cancelPainting() {
+    isPainting = false;
     ctx.beginPath();
-    const color = colors[Math.floor(Math.random() * colors.length)];
-    ctx.strokeStyle = color;
-    ctx.moveTo(0, 0);
-    ctx.lineTo(event.offsetX, event.offsetY);
-    ctx.lineWidth = 2;
-    ctx.stroke();
+}
+function onLineWidthChange(event) {
+    ctx.lineWidth = lineWidth.value;
 }
 
-canvas.addEventListener("mousemove", onClick);
+canvas.addEventListener("mousemove", onMove);
+canvas.addEventListener("mousedown", startPainting);
+canvas.addEventListener("mouseup", cancelPainting);
+canvas.addEventListener("mouseleave", cancelPainting);
+//마우스가 캔버스 밖으로 나갔을 때 mouseup이 감지 안되는 것을 방지//
+lineWidth.addEventListener("change", onLineWidthChange);
