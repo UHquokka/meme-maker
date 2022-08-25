@@ -1,3 +1,4 @@
+const color = document.getElementById("color");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
 const lineWidth = document.getElementById("line-width");
@@ -21,12 +22,16 @@ function cancelPainting() {
     ctx.beginPath();
 }
 function onLineWidthChange(event) {
-    ctx.lineWidth = lineWidth.value;
+    ctx.lineWidth = event.target.value;
 }
-
+function onColorChange(event) {
+    ctx.strokeStyle = event.target.value;
+    ctx.fillStyle = event.target.value;
+}
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
 canvas.addEventListener("mouseleave", cancelPainting);
 //마우스가 캔버스 밖으로 나갔을 때 mouseup이 감지 안되는 것을 방지//
 lineWidth.addEventListener("change", onLineWidthChange);
+color.addEventListener("change", onColorChange);
