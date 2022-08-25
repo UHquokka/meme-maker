@@ -1,3 +1,4 @@
+const colorOptions = Array.from(document.getElementsByClassName("color-option"));
 const color = document.getElementById("color");
 const canvas = document.querySelector("canvas");
 const ctx = canvas.getContext("2d");
@@ -21,17 +22,26 @@ function cancelPainting() {
     isPainting = false;
     ctx.beginPath();
 }
-function onLineWidthChange(event) {
-    ctx.lineWidth = event.target.value;
+function onColorClick(event) {
+    const colorValue = event.target.dataset.color;
+    ctx.strokeStyle = colorValue;
+    ctx.fillStyle = colorValue;
+    color.value = colorValue;
 }
-function onColorChange(event) {
-    ctx.strokeStyle = event.target.value;
-    ctx.fillStyle = event.target.value;
+
+function onColorChangeAll(event) {
+    const colorPick = event.target.value;
+    ctx.lineWidth = colorPick;
+    ctx.strokeStyle = colorPick;
+    ctx.fillStyle = colorPick;
 }
+
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
 canvas.addEventListener("mouseleave", cancelPainting);
 //마우스가 캔버스 밖으로 나갔을 때 mouseup이 감지 안되는 것을 방지//
-lineWidth.addEventListener("change", onLineWidthChange);
-color.addEventListener("change", onColorChange);
+lineWidth.addEventListener("change", onColorChangeAll);
+color.addEventListener("change", onColorChangeAll);
+
+colorOptions.forEach(color => color.addEventListener("click", onColorClick));
