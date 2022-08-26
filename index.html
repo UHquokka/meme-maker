@@ -12,18 +12,24 @@
 <body>
     <canvas></canvas>
     <input id="line-width" type="range" min="1" max="10" value="5" />
-    <input id="color" type="color" />
+    <div>
+        <input id="color" type="color" />
+        <div class="color-option" style="background-color: #a29bfe" data-color="#a29bfe"></div>
+        <div class="color-option" style="background-color: #6c5ce7" data-color="#6c5ce7"></div>
+        <div class="color-option" style="background-color: #fab1a0" data-color="#fab1a0"></div>
+        <div class="color-option" style="background-color: #e17055" data-color="#e17055"></div>
+        <div class="color-option" style="background-color: #ffeaa7" data-color="#ffeaa7"></div>
+        <div class="color-option" style="background-color: #fdcb6e" data-color="#fdcb6e"></div>
+        <div class="color-option" style="background-color: #f6b93b" data-color="#f6b93b"></div>
+        <div class="color-option" style="background-color: #6a89cc" data-color="#6a89cc"></div>
+        <div class="color-option" style="background-color: #60a3bc" data-color="#60a3bc"></div>
+        <div class="color-option" style="background-color: #fa983a" data-color="#fa983a"></div>
 
-    <div class="color-option" style="background-color: #a29bfe" data-color="#a29bfe"></div>
-    <div class="color-option" style="background-color: #6c5ce7" data-color="#6c5ce7"></div>
-    <div class="color-option" style="background-color: #fab1a0" data-color="#fab1a0"></div>
-    <div class="color-option" style="background-color: #e17055" data-color="#e17055"></div>
-    <div class="color-option" style="background-color: #ffeaa7" data-color="#ffeaa7"></div>
-    <div class="color-option" style="background-color: #fdcb6e" data-color="#fdcb6e"></div>
-    <div class="color-option" style="background-color: #f6b93b" data-color="#f6b93b"></div>
-    <div class="color-option" style="background-color: #6a89cc" data-color="#6a89cc"></div>
-    <div class="color-option" style="background-color: #60a3bc" data-color="#60a3bc"></div>
-    <div class="color-option" style="background-color: #fa983a" data-color="#fa983a"></div>
+    </div>
+    <button id="mode-btn">Fill</button>
+    <button id="destroy-btn">Distroy</button>
+    <button id="eraser-btn">Earaser</button>
+
     <script src="app.js"></script>
 </body>
 
