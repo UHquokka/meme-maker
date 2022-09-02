@@ -1,3 +1,4 @@
+const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
 const eraserBtn = document.getElementById("eraser-btn");
 const destroyBtn = document.getElementById("destroy-btn");
@@ -83,7 +84,16 @@ function onFileChange(event) {
         fileInput.value = null;
     }
 }
+function onDoubleClick(event) {
+    ctx.save();
+    const text = textInput.value;
+    ctx.lineWidth = 1;
+    ctx.font = "48px serif";
+    ctx.strokeText(text, event.offsetX, event.offsetY);
+    ctx.restore();
+}
 
+canvas.addEventListener("dblclick", onDoubleClick);
 canvas.addEventListener("mousemove", onMove);
 canvas.addEventListener("mousedown", startPainting);
 canvas.addEventListener("mouseup", cancelPainting);
