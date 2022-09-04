@@ -10,9 +10,7 @@
 </head>
 
 <body>
-    <canvas></canvas>
-    <input id="line-width" type="range" min="1" max="10" value="5" />
-    <div>
+    <div class="color-options">
         <input id="color" type="color" />
         <div class="color-option" style="background-color: #a29bfe" data-color="#a29bfe"></div>
         <div class="color-option" style="background-color: #6c5ce7" data-color="#6c5ce7"></div>
@@ -24,16 +22,19 @@
         <div class="color-option" style="background-color: #6a89cc" data-color="#6a89cc"></div>
         <div class="color-option" style="background-color: #60a3bc" data-color="#60a3bc"></div>
         <div class="color-option" style="background-color: #fa983a" data-color="#fa983a"></div>
+    </div>
+    <canvas></canvas>
+    <div class="btns">
+        <input id="line-width" type="range" min="1" max="10" value="5" />
+        <button id="mode-btn">Fill</button>
+        <button id="destroy-btn">Distroy</button>
+        <button id="eraser-btn">Earaser</button>
+        <!--파일인데 이미지 파일 (종류는 상관없음) 만 받겠다는 뜻-->
+        <input type="file" accept="image/*" id="file" />
+        <input type="text" placeholder="Write and then double click" id="text" />
+        <button id="save">Save Image</button>
 
     </div>
-    <button id="mode-btn">Fill</button>
-    <button id="destroy-btn">Distroy</button>
-    <button id="eraser-btn">Earaser</button>
-    <!--파일인데 이미지 파일 (종류는 상관없음) 만 받겠다는 뜻-->
-    <input type="file" accept="image/*" id="file" />
-    <input type="text" placeholder="Write and then double click" id="text" />
-    <button id="save">Save Image</button>
-
     <script src="app.js"></script>
 </body>
 
