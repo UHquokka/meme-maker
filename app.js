@@ -1,8 +1,11 @@
+const fontSizeInput = document.getElementById("font-size_input");
+const fontStyle = document.getElementById("font-style_select");
 const saveBtn = document.getElementById("save");
 const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
 const eraserBtn = document.getElementById("eraser-btn");
 const destroyBtn = document.getElementById("destroy-btn");
+const hightLight = document.getElementById("height-light");
 const modeBtn = document.getElementById("mode-btn");
 const colorOptions = Array.from(document.getElementsByClassName("color-option"));
 const color = document.getElementById("color");
@@ -19,6 +22,8 @@ ctx.lineWidth = lineWidth.value;
 ctx.lineCap = "round";
 let isPainting = false;
 let isFilling = false;
+let isHightLight = false;
+
 
 function onMove(event) {
     if (isPainting) {
@@ -52,19 +57,22 @@ function onColorChangeAll(event) {
 function onModeClick() {
     if (isFilling) {
         isFilling = false;
-        modeBtn.innerText = "FIll";
+        modeBtn.innerText = "💧 Fill";
+        if (isHightLight) {
+            isHightLight = false;
+        }
     }
     else {
         isFilling = true;
-        modeBtn.innerText = "Draw";
+        isHightLight = false;
+        modeBtn.innerText = "🖌 Draw";
     }
-
 }
+
 function onCanvasClick() {
     if (isFilling) {
         ctx.fillRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT);
     }
-
 }
 function onDestroyClick() {
     ctx.fillStyle = "white";
@@ -75,6 +83,11 @@ function onEaraserClick() {
     ctx.strokeStyle = "white";
     isFilling = false;
     modeBtn.innerText = "Fill";
+}
+function onHightLightClick() {
+    isHightLight = true;
+    ctx.globalAlpha = 0.03;
+    ctx.lineCap = "square";
 }
 function onFileChange(event) {
     const file = event.target.files[0];
@@ -96,6 +109,7 @@ function onDoubleClick(event) {
         ctx.restore();
     }
 }
+
 function onSaveClick(event) {
     const url = canvas.toDataURL();
     const a = document.createElement("a");
@@ -103,6 +117,7 @@ function onSaveClick(event) {
     a.download = "myDownload.png";
     a.click();
 }
+
 
 canvas.addEventListener("dblclick", onDoubleClick);
 canvas.addEventListener("mousemove", onMove);
@@ -117,6 +132,7 @@ color.addEventListener("change", onColorChangeAll);
 
 colorOptions.forEach(color => color.addEventListener("click", onColorClick));
 modeBtn.addEventListener("click", onModeClick);
+hightLight.addEventListener("click", onHightLightClick);
 destroyBtn.addEventListener("click", onDestroyClick);
 eraserBtn.addEventListener("click", onEaraserClick);
 fileInput.addEventListener("change", onFileChange);

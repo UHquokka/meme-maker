@@ -1,6 +1,7 @@
 @import "reset.css";
 
 body {
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -18,17 +19,21 @@ canvas {
 }
 
 
-.btns {
+.btns_function {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 .color-options {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 50px);
+    grid-template-rows: repeat(5, 50px);
     gap: 20px;
-    align-items: center;
+    margin-top: 20px;
 }
 
 .color-option {
@@ -46,9 +51,16 @@ canvas {
 
 input#color {
     background-color: white;
-
 }
 
+.btns_drawing {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 20px;
+}
 
 button {
     all: unset;
@@ -73,7 +85,8 @@ input#file {
     display: none;
 }
 
-input#text {
+input#text,
+input#color {
     all: unset;
     padding: 10px 0;
     border-radius: 10px;
@@ -81,7 +94,12 @@ input#text {
     background-color: white;
 }
 
-label {
+input#color {
+    all: unset;
+}
+
+
+label.file {
     padding: 10px 0;
     margin: 3px 0;
     text-align: center;
@@ -93,6 +111,7 @@ label {
     transition: background-color ease-in-out .2s;
     transition: transform ease-in-out .1s;
 }
+
 
 label:hover {
     opacity: 0.85;
