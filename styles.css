@@ -18,16 +18,7 @@ canvas {
     background-color: white;
 }
 
-
-.btns_function {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: antiquewhite;
-    padding: 20px;
-    border-radius: 20px;
-}
-
+/*왼쪽 드로잉 관련 메뉴*/
 .color-options {
     display: grid;
     grid-template-columns: repeat(2, 50px);
@@ -62,10 +53,21 @@ input#color {
     border-radius: 20px;
 }
 
+
+
 .brush_input {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.btns_function {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: antiquewhite;
+    padding: 20px;
+    border-radius: 20px;
 }
 
 button {

@@ -1,21 +1,24 @@
+//캔버스
+const canvas = document.querySelector("canvas");
+const ctx = canvas.getContext("2d");
+const CANVAS_WIDTH = 800;
+const CANVAS_HEIGHT = 800;
+//드로잉 기능
+const colorOptions = Array.from(document.getElementsByClassName("color-option"));
+const color = document.getElementById("color");
+const modeBtn = document.getElementById("mode-btn");
+const eraserBtn = document.getElementById("eraser-btn");
+const lineWidth = document.getElementById("line-width");
+//드로잉 - 미완성 기능
+const hightLight = document.getElementById("height-light");
+//기타 기능
 const fontSizeInput = document.getElementById("font-size_input");
 const fontStyle = document.getElementById("font-style_select");
 const saveBtn = document.getElementById("save");
 const textInput = document.getElementById("text");
 const fileInput = document.getElementById("file");
-const eraserBtn = document.getElementById("eraser-btn");
 const destroyBtn = document.getElementById("destroy-btn");
-const hightLight = document.getElementById("height-light");
-const modeBtn = document.getElementById("mode-btn");
-const colorOptions = Array.from(document.getElementsByClassName("color-option"));
-const color = document.getElementById("color");
-const canvas = document.querySelector("canvas");
-const ctx = canvas.getContext("2d");
 
-const CANVAS_WIDTH = 800;
-const CANVAS_HEIGHT = 800;
-
-const lineWidth = document.getElementById("line-width");
 canvas.width = CANVAS_WIDTH;
 canvas.height = CANVAS_HEIGHT;
 ctx.lineWidth = lineWidth.value;
